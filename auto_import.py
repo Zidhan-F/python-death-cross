@@ -75,7 +75,7 @@ def verify_connection(host, port, user, pwd):
         return False
 
 def main():
-    csv_file = "transaksi_harian_202605251952.csv"
+    csv_file = "transaksi_harian_202606130928.csv"
     if not os.path.exists(csv_file):
         print(f"[ERROR] CSV file {csv_file} not found in this folder.")
         return

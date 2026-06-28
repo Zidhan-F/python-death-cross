@@ -35,10 +35,14 @@ def main():
     db_name = config.get('database', 'saham_db')
     table_name = config.get('table_name', 'transaksi_harian')
 
-    # 2. Get target stock from user
+    # 2. Get target stock from user or command line arguments
     default_stock = 'tlkm'
-    target_input = input(f"Masukkan kode saham yang ingin dianalisis (default: {default_stock}): ").strip()
-    target_stock = target_input.lower() if target_input else default_stock.lower()
+    if len(sys.argv) > 1:
+        target_stock = sys.argv[1].lower()
+        print(f"Menggunakan kode saham dari argumen command-line: {target_stock.upper()}")
+    else:
+        target_input = input(f"Masukkan kode saham yang ingin dianalisis (default: {default_stock}): ").strip()
+        target_stock = target_input.lower() if target_input else default_stock.lower()
 
     print(f"\nMenghubungkan ke database '{db_name}'...")
     db_url = f"postgresql://{user}:{pwd}@{host}:{port}/{db_name}"

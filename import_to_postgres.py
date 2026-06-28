@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Script to Import Stock CSV Data to PostgreSQL
-Created for: transaksi_harian_202605251952.csv
+Created for: transaksi_harian_202606130928.csv
 """
 
 import os
@@ -34,7 +34,9 @@ def install_requirements():
 install_requirements()
 
 import pandas as pd
+# pyrefly: ignore [missing-import]
 from sqlalchemy import create_engine, text
+# pyrefly: ignore [missing-import]
 from sqlalchemy.types import Date, String, Float, BigInteger, Integer
 
 def get_connection_details():
@@ -76,7 +78,7 @@ def create_database_if_not_exists(host, port, user, password, db_name):
         temp_engine.dispose()
 
 def import_csv_to_postgres():
-    csv_path = "transaksi_harian_202605251952.csv"
+    csv_path = "transaksi_harian_202606130928.csv"
     if not os.path.exists(csv_path):
         # Try parent folder or search for csv in active directory
         print(f"Searching for CSV in current folder...")
@@ -85,7 +87,7 @@ def import_csv_to_postgres():
             csv_path = csv_files[0]
             print(f"Found CSV file: {csv_path}")
         else:
-            print("[ERROR] CSV file 'transaksi_harian_202605251952.csv' not found in this folder.")
+            print("[ERROR] CSV file 'transaksi_harian_202606130928.csv' not found in this folder.")
             sys.exit(1)
             
     print(f"Reading CSV file '{csv_path}'...")
